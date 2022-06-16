@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/Rinnegan/back.png</file>
+        <file>icons/Rinnegan/directory.png</file>
+        <file>icons/Rinnegan/forward.png</file>
+        <file>icons/Rinnegan/icon.png</file>
+        <file>icons/Rinnegan/pause.png</file>
+        <file>icons/Rinnegan/play.png</file>
+        <file>icons/Rinnegan/repeat.png</file>
+        <file>icons/Rinnegan/repeat_on.png</file>
+        <file>icons/Rinnegan/shuffle.png</file>
+        <file>icons/Rinnegan/shuffle_on.png</file>
+        <file>icons/Sharingan/back.png</file>
+        <file>icons/Sharingan/directory.png</file>
+        <file>icons/Sharingan/forward.png</file>
+        <file>icons/Sharingan/icon.png</file>
+        <file>icons/Sharingan/pause.png</file>
+        <file>icons/Sharingan/play.png</file>
+        <file>icons/Sharingan/repeat.png</file>
+        <file>icons/Sharingan/repeat_on.png</file>
+        <file>icons/Sharingan/shuffle.png</file>
+        <file>icons/Sharingan/shuffle_on.png</file>
+        <file>icons/Rinnegan/settings.png</file>
+        <file>icons/Sharingan/settings.png</file>
+    </qresource>
+</RCC>
