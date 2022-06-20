@@ -38,14 +38,18 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::on_playMusicButton_clicked() {
-  if (isPlaying && player->hasAudio()) {
+  if (!player->hasAudio()) {
+    return;
+  }
+
+  if (isPlaying) {
     player->pause();
 
     set_button_image(ui->playMusicButton, ":/icons/" + currentTheme + "/play.png");
 
     isPlaying = false;
 
-  } else if (!isPlaying && player->hasAudio()) {
+  } else if (!isPlaying) {
     player->play();
 
     set_button_image(ui->playMusicButton, ":/icons/" + currentTheme + "/pause.png");
