@@ -66,6 +66,8 @@ class MainWindow : public QMainWindow {
 
   void change_theme(QString theme);
 
+  QString get_path_to_icon(QString iconName);
+
  private:
   Ui::MainWindow* ui;
 

@@ -285,20 +285,20 @@ void MainWindow::set_theme() {
   // set Buttons icons
   set_button_image(ui->previousTrackButton, ":/icons/" + currentTheme + "/back.png");
   set_button_image(ui->nextTrackButton, ":/icons/" + currentTheme + "/forward.png");
-  set_button_image(ui->choose_directory_button, ":/icons/" + currentTheme + "/directory.png");
-  set_button_image(ui->setRandomButton, ":/icons/" + currentTheme + "/shuffle.png");
-  set_button_image(ui->loopTrackButton, ":/icons/" + currentTheme + "/repeat.png");
-  set_button_image(ui->settingsButton, ":/icons/" + currentTheme + "/settings.png");
+  set_button_image(ui->choose_directory_button, get_path_to_icon("directory.png"));
+  set_button_image(ui->setRandomButton, get_path_to_icon("shuffle.png"));
+//  set_button_image(ui->loopTrackButton, get_path_to_icon("repeat.png"));
+  set_button_image(ui->settingsButton, get_path_to_icon("settings.png"));
 
   if (isPlaying) {
-    set_button_image(ui->playMusicButton, ":/icons/" + currentTheme + "/pause.png");
+    set_button_image(ui->playMusicButton, get_path_to_icon("pause.png"));
   } else {
-    set_button_image(ui->playMusicButton, ":/icons/" + currentTheme + "/play.png");
+    set_button_image(ui->playMusicButton, get_path_to_icon("play.png"));
   }
 
   if (ui->listWidget->count()) {
     for (int i = 0; i < tracksAmount; i++) {
-      ui->listWidget->item(i)->setIcon(QIcon(":/icons/" + currentTheme + "/icon.png"));
+      ui->listWidget->item(i)->setIcon(QIcon(get_path_to_icon("icon.png")));
     }
   }
 }
@@ -346,4 +346,8 @@ void MainWindow::on_settingsButton_clicked() {
 void MainWindow::change_theme(QString theme) {
   currentTheme = theme;
   set_theme();
+}
+
+QString MainWindow::get_path_to_icon(QString iconName) {
+  return ":/icons/" + currentTheme + "/" + iconName;
 }
