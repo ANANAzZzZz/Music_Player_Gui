@@ -22,6 +22,7 @@ class settingswindow : public QDialog {
   void set_button_image(QPushButton* button, QString imagePath);
 
   void on_applyButton_clicked();
+
  private:
   QString* theme;
 

@@ -45,14 +45,14 @@ void MainWindow::on_playMusicButton_clicked() {
   if (isPlaying) {
     player->pause();
 
-    set_button_image(ui->playMusicButton, ":/icons/" + currentTheme + "/play.png");
+    set_button_image(ui->playMusicButton, get_path_to_icon("play.png"));
 
     isPlaying = false;
 
   } else if (!isPlaying) {
     player->play();
 
-    set_button_image(ui->playMusicButton, ":/icons/" + currentTheme + "/pause.png");
+    set_button_image(ui->playMusicButton, get_path_to_icon("pause.png"));
 
     isPlaying = true;
   }
@@ -109,7 +109,7 @@ void MainWindow::load_tracks(QString path) {
     QListWidgetItem* newTrack = new QListWidgetItem;
 
     // set track's icon in list
-    newTrack->setIcon(QIcon(":/icons/" + currentTheme + "/icon.png"));
+    newTrack->setIcon(QIcon(get_path_to_icon("icon.png")));
 
     // set track's name in list
     newTrack->setText(track.fileName());
@@ -193,12 +193,12 @@ void MainWindow::on_previousTrackButton_clicked() {
 
 void MainWindow::on_loopTrackButton_clicked() {
   if (!isLooped) {
-    set_button_image(ui->loopTrackButton, ":/icons/" + currentTheme + "/repeat_on.png");
+    set_button_image(ui->loopTrackButton, get_path_to_icon("repeat_on.png"));
 
     isLooped = true;
 
   } else {
-    set_button_image(ui->loopTrackButton, ":/icons/" + currentTheme + "/repeat.png");
+    set_button_image(ui->loopTrackButton, get_path_to_icon("repeat.png"));
 
     isLooped = false;
   }
@@ -219,7 +219,7 @@ void MainWindow::play_track_with_item(QListWidgetItem* trackItem) {
   ui->trackName->setText(trackItem->text());
 
   // set pause icon
-  set_button_image(ui->playMusicButton, ":/icons/" + currentTheme + "/pause.png");
+  set_button_image(ui->playMusicButton, get_path_to_icon("pause.png"));
 
   isPlaying = true;
 }
@@ -233,12 +233,12 @@ void MainWindow::restart_track() {
 
 void MainWindow::on_setRandomButton_clicked() {
   if (!isRandomed) {
-    set_button_image(ui->setRandomButton, ":/icons/" + currentTheme + "/shuffle_on.png");
+    set_button_image(ui->setRandomButton, get_path_to_icon("shuffle_on.png"));
 
     isRandomed = true;
 
   } else {
-    set_button_image(ui->setRandomButton, ":/icons/" + currentTheme + "/shuffle.png");
+    set_button_image(ui->setRandomButton, get_path_to_icon("shuffle.png"));
 
     isRandomed = false;
   }
@@ -269,7 +269,7 @@ void MainWindow::set_theme() {
   this->setWindowTitle(currentTheme + " player");
 
   // set window's icon
-  this->setWindowIcon(QIcon(":/icons/" + currentTheme + "/icon.png"));
+  this->setWindowIcon(QIcon(get_path_to_icon("icon.png")));
 
 
   // set listWidget's icons size
@@ -283,11 +283,11 @@ void MainWindow::set_theme() {
   set_slider_handle_color(ui->sliderProgress);
 
   // set Buttons icons
-  set_button_image(ui->previousTrackButton, ":/icons/" + currentTheme + "/back.png");
-  set_button_image(ui->nextTrackButton, ":/icons/" + currentTheme + "/forward.png");
+  set_button_image(ui->previousTrackButton, get_path_to_icon("back.png"));
+  set_button_image(ui->nextTrackButton, get_path_to_icon("forward.png"));
   set_button_image(ui->choose_directory_button, get_path_to_icon("directory.png"));
   set_button_image(ui->setRandomButton, get_path_to_icon("shuffle.png"));
-//  set_button_image(ui->loopTrackButton, get_path_to_icon("repeat.png"));
+  set_button_image(ui->loopTrackButton, get_path_to_icon("repeat.png"));
   set_button_image(ui->settingsButton, get_path_to_icon("settings.png"));
 
   if (isPlaying) {
