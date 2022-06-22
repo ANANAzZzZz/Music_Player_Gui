@@ -129,6 +129,13 @@ void MainWindow::load_tracks(QString path) {
 
 void MainWindow::on_choose_directory_button_clicked() {
   path = QFileDialog::getExistingDirectory(this, "Choose The Path");
+
+  if (path == nullptr) {
+    ui->listWidget->clear();
+
+    return;
+  }
+
   load_tracks(path);
 }
 
@@ -157,12 +164,12 @@ void MainWindow::on_nextTrackButton_clicked() {
 
       }
 
-      if (nextTrack != NULL) {
-        play_track_with_item(nextTrack);
-
-      } else {
+      if (nextTrack == nullptr) {
         return;
       }
+
+      play_track_with_item(nextTrack);
+
     }
   }
 }

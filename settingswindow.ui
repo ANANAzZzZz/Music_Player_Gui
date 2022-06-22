@@ -43,6 +43,9 @@
    <property name="text">
     <string>Sharingan theme</string>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QRadioButton" name="rinneganRadioButton">
    <property name="geometry">
