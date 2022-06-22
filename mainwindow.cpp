@@ -193,7 +193,7 @@ void MainWindow::on_previousTrackButton_clicked() {
         currentTrack = previousTrack;
       }
 
-      if (previousTrack != NULL) {
+      if (previousTrack != nullptr) {
         play_track_with_item(previousTrack);
 
       } else {
@@ -237,7 +237,7 @@ void MainWindow::play_track_with_item(QListWidgetItem* trackItem) {
 }
 
 void MainWindow::restart_track() {
-  if (currentTrack != NULL) {
+  if (currentTrack != nullptr) {
     ui->sliderProgress->setValue(0);
     play_track_with_item(currentTrack);
   }
