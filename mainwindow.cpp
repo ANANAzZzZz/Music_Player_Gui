@@ -132,6 +132,9 @@ void MainWindow::on_choose_directory_button_clicked() {
 
   if (path == nullptr) {
     ui->listWidget->clear();
+    ui->trackName->clear();
+
+    player->setSource(QUrl::fromLocalFile(nullptr));
 
     return;
   }
