@@ -271,6 +271,10 @@ void MainWindow::set_random_track() {
 
     currentTrack = ui->listWidget->item(randomTrackNumber);
 
+    if (currentTrack == nullptr) {
+      return;
+    }
+
     play_track_with_item(currentTrack);
 
   }
