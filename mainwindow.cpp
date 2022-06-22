@@ -78,14 +78,19 @@ void MainWindow::on_positionChanged(qint64 position) {
   // change the time on timestamp label
   ui->timeStampBeginning->setText(currentTrackDuration);
 
-  if ((currentTrackDuration == maxTrackDuration) && !isLooped && !isRandomed) {
-    on_nextTrackButton_clicked();
+  if (currentTrackDuration == maxTrackDuration) {
 
-  } else if ((currentTrackDuration == maxTrackDuration) && isLooped) {
-    restart_track();
+    if (!isLooped && !isRandomed) {
+      on_nextTrackButton_clicked();
+    }
 
-  } else if ((currentTrackDuration == maxTrackDuration) && !isLooped && isRandomed) {
-    set_random_track();
+    if (isLooped) {
+      restart_track();
+    }
+
+    if (!isLooped && isRandomed) {
+      set_random_track();
+    }
   }
 }
 
