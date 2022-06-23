@@ -2,16 +2,6 @@
 #include "ui_mainwindow.h"
 #include "settingswindow.h"
 
-/*
-// set item's text color
-ui->listWidget->item(currentTrackPosition)->setForeground(QColor("#ce1e05"));
-
-// set previous item's text color
-ui->listWidget->item(currentTrackPosition - 1)->setForeground(Qt::black);
-*/
-
-// purple - #af5fff
-
 MainWindow::MainWindow(QWidget* parent)
   : QMainWindow(parent)
   , ui(new Ui::MainWindow) {
@@ -119,7 +109,7 @@ void MainWindow::load_tracks(QString path) {
     // set track's name in list
     newTrack->setText(track.fileName());
 
-    // add track's itemo to the list
+    // add track's item to the list
     ui->listWidget->addItem(newTrack);
   }
 
@@ -138,7 +128,6 @@ void MainWindow::on_choose_directory_button_clicked() {
 
     return;
   }
-
   load_tracks(path);
 }
 
@@ -156,7 +145,6 @@ void MainWindow::on_nextTrackButton_clicked() {
     if (isRandomed) {
       set_random_track();
     } else {
-
       if ((currentTrackPosition + 1) == (tracksAmount)) {
         nextTrack = ui->listWidget->item(0);
         currentTrack = nextTrack;
@@ -164,7 +152,6 @@ void MainWindow::on_nextTrackButton_clicked() {
       } else {
         nextTrack = ui->listWidget->item(currentTrackPosition + 1);
         currentTrack = nextTrack;
-
       }
 
       if (nextTrack == nullptr) {
@@ -172,7 +159,6 @@ void MainWindow::on_nextTrackButton_clicked() {
       }
 
       play_track_with_item(nextTrack);
-
     }
   }
 }
@@ -266,7 +252,7 @@ void MainWindow::set_random_track() {
   if (player->hasAudio()) {
     currentTrackNumber = ui->listWidget->row(currentTrack);
 
-    randomTrackNumber = 0 + (rand() % static_cast<int>(tracksAmount));
+    randomTrackNumber = rand() % static_cast<int>(tracksAmount);
 
     if (randomTrackNumber == currentTrackNumber) {
       return set_random_track();
@@ -289,7 +275,6 @@ void MainWindow::set_theme() {
 
   // set window's icon
   this->setWindowIcon(QIcon(get_path_to_icon("icon.png")));
-
 
   // set listWidget's icons size
   ui->listWidget->setIconSize(QSize(30, 30));
