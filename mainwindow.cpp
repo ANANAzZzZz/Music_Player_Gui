@@ -249,24 +249,25 @@ void MainWindow::set_random_track() {
   qint64 randomTrackNumber;
   qint64 currentTrackNumber;
 
-  if (player->hasAudio()) {
-    currentTrackNumber = ui->listWidget->row(currentTrack);
-
-    randomTrackNumber = rand() % static_cast<int>(tracksAmount);
-
-    if (randomTrackNumber == currentTrackNumber) {
-      return set_random_track();
-    }
-
-    currentTrack = ui->listWidget->item(randomTrackNumber);
-
-    if (currentTrack == nullptr) {
-      return;
-    }
-
-    play_track_with_item(currentTrack);
-
+  if (!player->hasAudio() || tracksAmount == 1) {
+    return;
   }
+
+  currentTrackNumber = ui->listWidget->row(currentTrack);
+
+  randomTrackNumber = rand() % static_cast<int>(tracksAmount);
+
+  if (randomTrackNumber == currentTrackNumber) {
+    return set_random_track();
+  }
+
+  currentTrack = ui->listWidget->item(randomTrackNumber);
+
+  if (currentTrack == nullptr) {
+    return;
+  }
+
+  play_track_with_item(currentTrack);
 }
 
 void MainWindow::set_theme() {
