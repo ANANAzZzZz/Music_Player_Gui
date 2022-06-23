@@ -71,6 +71,11 @@ class MainWindow : public QMainWindow {
  private:
   Ui::MainWindow* ui;
 
+  enum Colour {
+    SHARINGAN,
+    RINNEGAN
+  };
+
   QMediaPlayer* player;
   QAudioOutput* audioOutput;
 

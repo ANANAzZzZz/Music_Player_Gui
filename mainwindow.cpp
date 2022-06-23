@@ -310,13 +310,15 @@ void MainWindow::set_theme() {
 void MainWindow::set_button_image(QPushButton* button, QString imagePath) {
   QString buttonName = button->objectName();
 
-  button->setStyleSheet("#" + buttonName + " " + "{"
-                        "background-color: transparent;"
-                        "border-image: url(" + imagePath + ");"
-                        "background: none;"
-                        "border: none;"
-                        "background-repeat: none;"
-                        "}");
+  button->setStyleSheet(
+      "#" + buttonName + " " + "{"
+      "background-color: transparent;"
+      "border-image: url(" + imagePath + ");"
+      "background: none;"
+      "border: none;"
+      "background-repeat: none;"
+      "}"
+  );
 }
 
 void MainWindow::set_slider_handle_color(QSlider* slider) {
@@ -328,13 +330,15 @@ void MainWindow::set_slider_handle_color(QSlider* slider) {
     currentColor = "#af5fff";
   }
 
-  slider->setStyleSheet("QSlider::handle:horizontal {"
-                        "background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0" + currentColor + ", stop:1" + currentColor + ");"
-                        "border: 1px solid" + currentColor + ";"
-                        "width: 18px;"
-                        "margin: -2px 0;"
-                        "border-radius: 3px;"
-                        "}");
+  slider->setStyleSheet(
+      "QSlider::handle:horizontal {"
+      "background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0" + currentColor + ", stop:1" + currentColor + ");"
+      "border: 1px solid" + currentColor + ";"
+      "width: 18px;"
+      "margin: -2px 0;"
+      "border-radius: 3px;"
+      "}"
+  );
 }
 
 void MainWindow::on_settingsButton_clicked() {

@@ -25,13 +25,15 @@ settingswindow::~settingswindow() {
 void settingswindow::set_button_image(QPushButton* button, QString imagePath) {
   QString buttonName = button->objectName();
 
-  button->setStyleSheet("#" + buttonName + " " + "{"
-                        "background-color: transparent;"
-                        "border-image: url(" + imagePath + ");"
-                        "background: none;"
-                        "border: none;"
-                        "background-repeat: none;"
-                        "}");
+  button->setStyleSheet(
+      "#" + buttonName + " " + "{"
+      "background-color: transparent;"
+      "border-image: url(" + imagePath + ");"
+      "background: none;"
+      "border: none;"
+      "background-repeat: none;"
+      "}"
+  );
 }
 
 void settingswindow::on_applyButton_clicked() {
