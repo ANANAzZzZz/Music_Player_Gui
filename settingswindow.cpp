@@ -7,7 +7,6 @@ settingswindow::settingswindow(QWidget* parent) :
   ui(new Ui::settingswindow) {
   ui->setupUi(this);
 
-
   // set window's title
   this->setWindowTitle("Settings");
 

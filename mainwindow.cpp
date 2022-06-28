@@ -182,12 +182,11 @@ void MainWindow::on_previousTrackButton_clicked() {
         currentTrack = previousTrack;
       }
 
-      if (previousTrack != nullptr) {
-        play_track_with_item(previousTrack);
-
-      } else {
+      if (previousTrack == nullptr) {
         return;
       }
+
+      play_track_with_item(previousTrack);
     }
   }
 }
