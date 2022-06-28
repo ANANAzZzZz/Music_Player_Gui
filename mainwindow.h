@@ -25,6 +25,11 @@ class MainWindow : public QMainWindow {
   MainWindow(QWidget* parent = nullptr);
   ~MainWindow();
 
+  enum theme {
+    SHARINGAN,
+    RINNEGAN
+  };
+
  private slots:
   void set_theme();
 
@@ -64,17 +69,12 @@ class MainWindow : public QMainWindow {
 
   void on_settingsButton_clicked();
 
-  void change_theme(QString theme);
+  void change_theme(qint64 theme);
 
   QString get_path_to_icon(QString iconName);
 
  private:
   Ui::MainWindow* ui;
-
-  enum Colour {
-    SHARINGAN,
-    RINNEGAN
-  };
 
   QMediaPlayer* player;
   QAudioOutput* audioOutput;
@@ -85,7 +85,7 @@ class MainWindow : public QMainWindow {
   QString maxTrackDuration;
   QString currentTrackDuration;
   QString volumeLevel;
-  QString currentTheme;
+  qint64 currentTheme;
 
   QListWidgetItem* currentTrack;
 

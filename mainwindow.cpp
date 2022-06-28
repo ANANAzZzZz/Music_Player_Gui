@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget* parent)
   isLooped = false;
   isRandomed = false;
 
-  currentTheme = "Sharingan";
+  currentTheme = theme::SHARINGAN;
 
   ui->setupUi(this);
 
@@ -272,7 +272,7 @@ void MainWindow::set_random_track() {
 
 void MainWindow::set_theme() {
   // set window's title
-  this->setWindowTitle(currentTheme + " player");
+  this->setWindowTitle("Sharingan player");
 
   // set window's icon
   this->setWindowIcon(QIcon(get_path_to_icon("icon.png")));
@@ -325,9 +325,9 @@ void MainWindow::set_button_image(QPushButton* button, QString imagePath) {
 void MainWindow::set_slider_handle_color(QSlider* slider) {
   QString currentColor;
 
-  if (currentTheme == "Sharingan") {
+  if (currentTheme == theme::SHARINGAN) {
     currentColor = "#ce1e05";
-  } else if (currentTheme == "Rinnegan") {
+  } else if (currentTheme == theme::RINNEGAN) {
     currentColor = "#af5fff";
   }
 
@@ -347,16 +347,24 @@ void MainWindow::on_settingsButton_clicked() {
 
   window.setModal(true);
 
-  connect(&window, SIGNAL(sendCurrentTheme(QString)), this, SLOT(change_theme(QString)));
+  connect(&window, SIGNAL(sendCurrentTheme(qint64)), this, SLOT(change_theme(qint64)));
 
   window.exec();
 }
 
-void MainWindow::change_theme(QString theme) {
+void MainWindow::change_theme(qint64 theme) {
   currentTheme = theme;
   set_theme();
 }
 
 QString MainWindow::get_path_to_icon(QString iconName) {
-  return ":/icons/" + currentTheme + "/" + iconName;
+  QString themeName;
+
+  if (currentTheme == theme::SHARINGAN) {
+    themeName = "Sharingan";
+  } else if (currentTheme == theme::RINNEGAN) {
+    themeName = "Rinnegan";
+  }
+
+  return ":/icons/" + themeName + "/" + iconName;
 }

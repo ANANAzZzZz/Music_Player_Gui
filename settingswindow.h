@@ -24,10 +24,10 @@ class settingswindow : public QDialog {
   void on_applyButton_clicked();
 
  private:
-  QString* theme;
+  qint64* theme;
 
  signals:
-  void sendCurrentTheme(QString curTheme);
+  void sendCurrentTheme(qint64 curTheme);
 
 };
 

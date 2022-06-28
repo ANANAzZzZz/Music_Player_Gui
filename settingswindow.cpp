@@ -37,13 +37,13 @@ void settingswindow::set_button_image(QPushButton* button, QString imagePath) {
 }
 
 void settingswindow::on_applyButton_clicked() {
-  QString theme;
+  qint64 theme;
 
   if (ui->sharinganRadioButton->isChecked()) {
-    theme = "Sharingan";
+    theme = MainWindow::theme::SHARINGAN;
 
   } else if (ui->rinneganRadioButton->isChecked()) {
-    theme = "Rinnegan";
+    theme = MainWindow::theme::RINNEGAN;
   }
 
   emit sendCurrentTheme(theme);
