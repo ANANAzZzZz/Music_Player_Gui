@@ -305,6 +305,14 @@ void MainWindow::set_theme() {
       ui->listWidget->item(i)->setIcon(QIcon(get_path_to_icon("icon.png")));
     }
   }
+
+  if (isLooped) {
+    set_button_image(ui->loopTrackButton, get_path_to_icon("repeat_on.png"));
+  }
+
+  if (isRandomed) {
+    set_button_image(ui->setRandomButton, get_path_to_icon("shuffle_on.png"));
+  }
 }
 
 void MainWindow::set_button_image(QPushButton* button, QString imagePath) {
