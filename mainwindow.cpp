@@ -28,6 +28,8 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::on_playMusicButton_clicked() {
+  log_info("pause button has pressed");
+
   if (!player->hasAudio()) {
     return;
   }
@@ -49,10 +51,12 @@ void MainWindow::on_playMusicButton_clicked() {
 }
 
 void MainWindow::on_sliderProgress_sliderMoved(int position) {
+  log_info("progress slider has moved");
   player->setPosition(position);
 }
 
 void MainWindow::on_sliderVolume_valueChanged(int position) {
+  log_info("volume slider has moved");
   audioOutput->setVolume(position * 0.01);
 
   volumeLevel = QString::number(position);
@@ -64,6 +68,7 @@ void MainWindow::on_positionChanged(qint64 position) {
   ui->sliderProgress->setValue(position);
 
   currentTrackDuration = QDateTime::fromMSecsSinceEpoch(position).toUTC().toString("mm:ss");
+  log_info("current time:" + currentTrackDuration);
 
   // change the time on timestamp label
   ui->timeStampBeginning->setText(currentTrackDuration);
@@ -115,9 +120,13 @@ void MainWindow::load_tracks(QString path) {
 
   // set tracks amount
   tracksAmount = ui->listWidget->count();
+
+  log_info("tracks have loaded");
 }
 
 void MainWindow::on_choose_directory_button_clicked() {
+  log_info("choose directory button has pressed");
+
   path = QFileDialog::getExistingDirectory(this, "Choose The Path");
 
   if (path == nullptr) {
@@ -132,12 +141,16 @@ void MainWindow::on_choose_directory_button_clicked() {
 }
 
 void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem* item) {
+  log_info("on list widget's item double clicked");
+
   currentTrack = item;
   play_track_with_item(item);
 }
 
 void MainWindow::on_nextTrackButton_clicked() {
   if (player->hasAudio()) {
+    log_info("next track button has pressed");
+
     QListWidgetItem* nextTrack;
     qint64 currentTrackPosition = ui->listWidget->row(currentTrack);
     qint64 tracksAmount = ui->listWidget->count();
@@ -165,6 +178,7 @@ void MainWindow::on_nextTrackButton_clicked() {
 
 void MainWindow::on_previousTrackButton_clicked() {
   if (player->hasAudio()) {
+    log_info("previous track button has pressed");
 
     QListWidgetItem* previousTrack;
     qint64 currentTrackPosition = ui->listWidget->row(currentTrack);
@@ -192,6 +206,8 @@ void MainWindow::on_previousTrackButton_clicked() {
 }
 
 void MainWindow::on_loopTrackButton_clicked() {
+  log_info("loop track button has pressed");
+
   if (!isLooped) {
     set_button_image(ui->loopTrackButton, get_path_to_icon("repeat_on.png"));
 
@@ -225,6 +241,8 @@ void MainWindow::play_track_with_item(QListWidgetItem* trackItem) {
 }
 
 void MainWindow::restart_track() {
+  log_info("track has restarted");
+
   if (currentTrack != nullptr) {
     ui->sliderProgress->setValue(0);
     play_track_with_item(currentTrack);
@@ -232,6 +250,8 @@ void MainWindow::restart_track() {
 }
 
 void MainWindow::on_setRandomButton_clicked() {
+  log_info("set random button has pressed");
+
   if (!isRandomed) {
     set_button_image(ui->setRandomButton, get_path_to_icon("shuffle_on.png"));
 
@@ -245,6 +265,8 @@ void MainWindow::on_setRandomButton_clicked() {
 }
 
 void MainWindow::set_random_track() {
+  log_info("random track is set");
+
   qint64 randomTrackNumber;
   qint64 currentTrackNumber;
 
@@ -313,6 +335,8 @@ void MainWindow::set_theme() {
   if (isRandomed) {
     set_button_image(ui->setRandomButton, get_path_to_icon("shuffle_on.png"));
   }
+
+  log_info("theme has set");
 }
 
 void MainWindow::set_button_image(QPushButton* button, QString imagePath) {
@@ -350,6 +374,8 @@ void MainWindow::set_slider_handle_color(QSlider* slider) {
 }
 
 void MainWindow::on_settingsButton_clicked() {
+  log_info("settings button has pressed");
+
   settingswindow window;
 
   window.setModal(true);
@@ -360,6 +386,8 @@ void MainWindow::on_settingsButton_clicked() {
 }
 
 void MainWindow::change_theme(qint64 theme) {
+  log_info("theme has changed");
+
   currentTheme = theme;
   set_theme();
 }
@@ -374,4 +402,8 @@ QString MainWindow::get_path_to_icon(QString iconName) {
   }
 
   return ":/icons/" + themeName + "/" + iconName;
+}
+
+void MainWindow::log_info(QString message) {
+  qDebug() << message;
 }

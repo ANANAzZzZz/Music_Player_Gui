@@ -73,6 +73,8 @@ class MainWindow : public QMainWindow {
 
   QString get_path_to_icon(QString iconName);
 
+  void log_info(QString message);
+
  private:
   Ui::MainWindow* ui;
 
